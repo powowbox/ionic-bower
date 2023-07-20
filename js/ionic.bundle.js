@@ -361,7 +361,7 @@ window.ionic.version = '1.2.4-nightly-1917';
      * className, or null.
      */
     getParentWithClass: function(e, className, depth) {
-      depth = depth || 10;
+      depth = depth || 100;
       while (e.parentNode && depth--) {
         if (e.parentNode.classList && e.parentNode.classList.contains(className)) {
           return e.parentNode;
@@ -379,7 +379,7 @@ window.ionic.version = '1.2.4-nightly-1917';
      * className, or null.
      */
     getParentOrSelfWithClass: function(e, className, depth) {
-      depth = depth || 10;
+      depth = depth || 100;
       while (e && depth--) {
         if (e.classList && e.classList.contains(className)) {
           return e;
