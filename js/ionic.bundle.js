@@ -6149,6 +6149,16 @@ ionic.views.Scroll = ionic.views.View.inherit({
     // Publish new values
     self.__publish(left, top, zoom, animate, wasResize);
 
+    // A clamped or non-animated scroll has no completion callback to restore inputs.
+    if (!self.__isAnimating && !self.__isDragging && !self.__isDecelerating) {
+      ionic.requestAnimationFrame(function() {
+        // Let a pending clone render first, and preserve inputs during a new scroll.
+        if (self.__container && !self.__isAnimating && !self.__isDragging && !self.__isDecelerating) {
+          ionic.tap.removeClonedInputs(self.__container);
+        }
+      });
+    }
+
   },
 
 
